@@ -29,48 +29,34 @@ const HeroSection = ({
   }, [controls]);
 
   return (
-    <div className="relative w-full h-[800px] overflow-hidden bg-black">
-      {/* Background image with overlay */}
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-black to-gray-900 text-white">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 opacity-40 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${backgroundImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+      />
 
-      {/* Animated particles */}
       <ParticleEffect />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center text-white max-w-5xl mx-auto">
+      <div className="container mx-auto px-4 z-10 relative">
         <motion.div
+          className="max-w-3xl mx-auto text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={controls}
-          className="space-y-6"
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
-            className="flex items-center justify-center mb-4"
-          >
-            <Sparkles className="h-10 w-10 text-yellow-400 mr-2" />
-          </motion.div>
-
           <motion.h1
-            className="text-5xl md:text-7xl font-bold tracking-tight"
+            className="text-4xl md:text-6xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
             {title}
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl mb-8 text-gray-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
             {subtitle}
           </motion.p>
@@ -78,26 +64,36 @@ const HeroSection = ({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="pt-6"
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button
               size="lg"
               onClick={onCtaClick}
-              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg rounded-full"
+              className="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-6 text-lg"
             >
-              {ctaText}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              {ctaText} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white/20 font-bold px-8 py-6 text-lg"
+            >
+              Découvrir <Sparkles className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="mt-12"
+          >
+            <AnimatedCards />
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Animated cards at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-        <AnimatedCards />
-      </div>
-    </div>
+    </section>
   );
 };
 
@@ -110,12 +106,12 @@ const ParticleEffect = () => {
           key={index}
           className="absolute h-2 w-2 rounded-full bg-yellow-300 opacity-70"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * 100 + "%",
+            y: Math.random() * 100 + "%",
             scale: Math.random() * 0.5 + 0.5,
           }}
           animate={{
-            y: [null, Math.random() * -100 - 50],
+            y: [null, "-100px"],
             opacity: [0.7, 0],
           }}
           transition={{
