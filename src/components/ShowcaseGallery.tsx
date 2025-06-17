@@ -30,14 +30,15 @@ interface ShowcaseGalleryProps {
 }
 
 const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
-  title = "Magical Performances",
-  description = "Explore a collection of enchanting magical performances tailored for all audiences.",
+  title = "Spectacles de magie",
+  description =
+    "Découvrez une sélection de numéros ensorcelants adaptés à tous les publics.",
   items = [
     {
       id: "1",
-      title: "Card Manipulation",
+      title: "Manipulation de cartes",
       description:
-        "Witness incredible sleight of hand with playing cards that will leave you amazed.",
+        "Découvrez une dextérité incroyable avec des cartes qui vous laissera sans voix.",
       image:
         "https://images.unsplash.com/photo-1612404459571-ff53a7f739a0?w=800&q=80",
       category: "Close-up",
@@ -45,53 +46,53 @@ const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
     },
     {
       id: "2",
-      title: "Levitation Wonder",
+      title: "Merveille lévitante",
       description:
-        "Experience the impossible as objects defy gravity before your very eyes.",
+        "Voyez l'impossible lorsque les objets défient la gravité sous vos yeux.",
       image:
         "https://images.unsplash.com/photo-1618513462242-4b6c5d2c1ba4?w=800&q=80",
-      category: "Stage",
+      category: "Scène",
       videoUrl: "https://example.com/video2",
     },
     {
       id: "3",
-      title: "Magical Storytelling",
+      title: "Conte magique",
       description:
-        "A narrative-driven performance combining magic with captivating storytelling.",
+        "Un spectacle narratif mêlant illusion et histoires captivantes.",
       image:
         "https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=800&q=80",
-      category: "Children",
+      category: "Enfants",
       videoUrl: "https://example.com/video3",
     },
     {
       id: "4",
-      title: "Mind Reading",
+      title: "Lecture de pensée",
       description:
-        "Prepare to be astonished as your thoughts are revealed in this mental magic showcase.",
+        "Soyez étonné lorsque vos pensées sont devinées lors de ce numéro de mentalisme.",
       image:
         "https://images.unsplash.com/photo-1603574670812-d24560880210?w=800&q=80",
-      category: "Mentalism",
+      category: "Mentalisme",
       videoUrl: "https://example.com/video4",
     },
     {
       id: "5",
-      title: "Disappearing Act",
+      title: "Numéro de disparition",
       description:
-        "Watch in wonder as objects and volunteers vanish and reappear in unexpected ways.",
+        "Admirez la disparition puis la réapparition d'objets et de volontaires de façon inattendue.",
       image:
         "https://images.unsplash.com/photo-1576244296839-2c4b8a4b2b1b?w=800&q=80",
-      category: "Stage",
+      category: "Scène",
       videoUrl: "https://example.com/video5",
     },
   ],
-  categories = ["All", "Close-up", "Stage", "Children", "Mentalism"],
+  categories = ["Tous", "Close-up", "Scène", "Enfants", "Mentalisme"],
   variant = "adult",
 }) => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Tous");
   const [selectedItem, setSelectedItem] = useState<ShowItem | null>(null);
 
   const filteredItems =
-    activeCategory === "All"
+    activeCategory === "Tous"
       ? items
       : items.filter((item) => item.category === activeCategory);
 
@@ -141,8 +142,8 @@ const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
 
         <Tabs defaultValue="gallery" className="w-full">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-            <TabsTrigger value="gallery">Gallery</TabsTrigger>
-            <TabsTrigger value="carousel">Carousel</TabsTrigger>
+            <TabsTrigger value="gallery">Galerie</TabsTrigger>
+            <TabsTrigger value="carousel">Carrousel</TabsTrigger>
           </TabsList>
 
           <div className="mb-8">
@@ -206,7 +207,7 @@ const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
                             size="sm"
                             onClick={() => openModal(item)}
                           >
-                            View Details
+                            Voir les détails
                           </Button>
                         </div>
                       </CardContent>
@@ -259,11 +260,11 @@ const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
               <div className="flex justify-center mt-8 gap-4">
                 <CarouselPrevious className="relative static transform-none">
                   <ChevronLeft className="h-5 w-5" />
-                  <span className="sr-only">Previous</span>
+                  <span className="sr-only">Précédent</span>
                 </CarouselPrevious>
                 <CarouselNext className="relative static transform-none">
                   <ChevronRight className="h-5 w-5" />
-                  <span className="sr-only">Next</span>
+                  <span className="sr-only">Suivant</span>
                 </CarouselNext>
               </div>
             </Carousel>
@@ -293,7 +294,7 @@ const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
                   <div className="w-full h-full flex items-center justify-center bg-black">
                     <div className="text-white text-center p-8">
                       <Play className="h-16 w-16 mx-auto mb-4" />
-                      <p>Video would play here</p>
+                      <p>La vidéo apparaîtrait ici</p>
                       <p className="text-sm text-gray-400">
                         ({selectedItem.videoUrl})
                       </p>
@@ -316,7 +317,7 @@ const ShowcaseGallery: React.FC<ShowcaseGalleryProps> = ({
                 </span>
                 <p className="text-gray-600 mb-6">{selectedItem.description}</p>
                 <div className="flex justify-end">
-                  <Button onClick={closeModal}>Close</Button>
+                  <Button onClick={closeModal}>Fermer</Button>
                 </div>
               </div>
             </motion.div>
